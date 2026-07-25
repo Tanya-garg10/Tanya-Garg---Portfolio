@@ -159,8 +159,6 @@ This project is open source and available under the [MIT License](LICENSE).
 - Icons from [Lucide](https://lucide.dev/)
 - Animations with [Framer Motion](https://www.framer.com/motion/)
 
----
-
 **Made with ❤️ by Tanya Garg**
 
 *Last Updated: March 2026*
