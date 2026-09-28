@@ -15,7 +15,7 @@ export default {
     extend: {
       fontFamily: {
         display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
-        body: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+        body: ['"Inter"', '"Space Grotesk"', 'system-ui', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'monospace'],
       },
       colors: {
@@ -64,6 +64,9 @@ export default {
         nav: "hsl(var(--nav))",
         "timeline-line": "hsl(var(--timeline-line))",
         "timeline-dot": "hsl(var(--timeline-dot))",
+        lime: "hsl(var(--lime))",
+        charcoal: "hsl(var(--charcoal))",
+        ivory: "hsl(var(--ivory))",
       },
       borderRadius: {
         lg: "var(--radius)",

@@ -1,152 +1,138 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Github, Linkedin, Mail, MapPin, Sparkles, ArrowUpRight } from "lucide-react";
+import { Github, Linkedin, Mail, MapPin, ArrowUpRight } from "lucide-react";
 
-const contactMethods = [
+const contactLinks = [
   {
-    icon: Mail,
-    title: "Email",
-    value: "tanyagarg5315@gmail.com",
-    link: "mailto:tanyagarg5315@gmail.com",
-    description: "Drop me an email anytime",
-    color: "from-red-500 to-orange-500"
-  },
-  {
-    icon: Github,
-    title: "GitHub",
-    value: "@Tanya-garg10",
-    link: "https://github.com/Tanya-garg10",
-    description: "Check out my code",
-    color: "from-gray-700 to-gray-900"
-  },
-  {
+    id: "contact-linkedin",
     icon: Linkedin,
-    title: "LinkedIn",
+    label: "LinkedIn",
     value: "Tanya Garg",
-    link: "https://www.linkedin.com/in/tanya-garg-6757862b1",
-    description: "Let's connect professionally",
-    color: "from-blue-600 to-blue-800"
-  }
+    href: "https://www.linkedin.com/in/tanya-garg-6757862b1",
+    desc: "Let's connect professionally",
+  },
+  {
+    id: "contact-github",
+    icon: Github,
+    label: "GitHub",
+    value: "@Tanya-garg10",
+    href: "https://github.com/Tanya-garg10",
+    desc: "Check out my code",
+  },
+  {
+    id: "contact-email",
+    icon: Mail,
+    label: "Email",
+    value: "tanyagarg5315@gmail.com",
+    href: "mailto:tanyagarg5315@gmail.com",
+    desc: "Drop me a message",
+  },
 ];
 
 const ContactSection = () => {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
+    <section id="contact" className="py-32 relative overflow-hidden border-t border-border">
+      {/* Background grid */}
+      <div className="absolute inset-0 grid-pattern opacity-30 pointer-events-none" />
 
-      <div className="container mx-auto px-4 relative z-10">
+      {/* Corner decorations */}
+      <div className="absolute top-12 left-8 font-mono text-[10px] text-muted-foreground/30 tracking-widest hidden lg:block">
+        SECTION 06 / CONTACT
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        {/* Big editorial CTA */}
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 60 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-20"
         >
-          <div className="text-center mb-16">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={inView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4"
-            >
-              <Sparkles className="text-primary" size={16} />
-              <span className="text-sm font-medium text-primary">Let's Connect</span>
-            </motion.div>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-              Get In <span className="text-gradient">Touch</span>
-            </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
-            </p>
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-8 h-px bg-lime" />
+            <span className="label-sm">Get In Touch</span>
           </div>
 
-          <div className="max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-3 gap-6 mb-12">
-              {contactMethods.map((method, index) => (
-                <motion.a
-                  key={method.title}
-                  href={method.link}
-                  target={method.link.startsWith('http') ? "_blank" : undefined}
-                  rel={method.link.startsWith('http') ? "noopener noreferrer" : undefined}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="group relative p-6 rounded-2xl bg-card border border-border hover:border-primary/50 transition-all duration-300 card-hover"
-                >
-                  <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${method.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
+          <h2 className="font-display font-bold text-5xl sm:text-6xl lg:text-7xl xl:text-[6rem] leading-[0.9] tracking-tight mb-8">
+            GOT AN
+            <br />
+            IDEA?{" "}
+            <span className="text-lime">LET'S</span>
+            <br />
+            <span className="text-lime">BUILD IT.</span>
+          </h2>
 
-                  <div className="relative">
-                    <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${method.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                      <method.icon className="text-white" size={24} />
-                    </div>
+          <p className="text-muted-foreground text-lg max-w-xl leading-relaxed">
+            I'm always open to discussing new projects, creative ideas, or opportunities to be part of something meaningful.
+            Based in India — available remote, worldwide.
+          </p>
+        </motion.div>
 
-                    <h3 className="text-xl font-semibold mb-2 flex items-center justify-between">
-                      {method.title}
-                      <ArrowUpRight className="text-muted-foreground group-hover:text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" size={18} />
-                    </h3>
-
-                    <p className="text-sm text-muted-foreground mb-3">
-                      {method.description}
-                    </p>
-
-                    <p className="text-sm font-medium text-primary break-all">
-                      {method.value}
-                    </p>
-                  </div>
-                </motion.a>
-              ))}
-            </div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
+        {/* Contact links — large editorial cards */}
+        <div className="grid md:grid-cols-3 gap-4 mb-16">
+          {contactLinks.map((link, i) => (
+            <motion.a
+              key={link.id}
+              id={link.id}
+              href={link.href}
+              target={link.href.startsWith("http") ? "_blank" : undefined}
+              rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+              initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-center"
+              transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
+              className="group relative p-6 border border-border bg-card hover:border-lime/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_-15px_hsl(75_100%_50%_/_0.12)]"
             >
-              <div className="inline-block p-8 rounded-2xl bg-gradient-to-br from-primary/10 to-blue-500/10 border border-primary/20">
-                <div className="flex items-center justify-center gap-2 mb-4">
-                  <MapPin className="text-primary" size={20} />
-                  <h3 className="text-xl font-semibold">Based in India</h3>
-                </div>
-                <p className="text-muted-foreground mb-6 max-w-md">
-                  Available for remote opportunities, freelance projects, and collaborations worldwide.
-                </p>
-                <div className="flex flex-wrap justify-center gap-3">
-                  <span className="px-4 py-2 rounded-lg bg-secondary text-sm font-medium">
-                    Open to Work
-                  </span>
-                  <span className="px-4 py-2 rounded-lg bg-secondary text-sm font-medium">
-                    Remote Friendly
-                  </span>
-                  <span className="px-4 py-2 rounded-lg bg-secondary text-sm font-medium">
-                    Quick Responder
-                  </span>
-                </div>
-              </div>
-            </motion.div>
+              <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-lime/20 group-hover:border-lime transition-colors duration-300" />
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={inView ? { opacity: 1 } : {}}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="mt-12 text-center"
-            >
-              <p className="text-muted-foreground text-sm mb-4">
-                Prefer email? Send me a message directly
-              </p>
-              <a
-                href="mailto:tanyagarg5315@gmail.com"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-primary text-primary-foreground font-semibold hover:shadow-lg hover:shadow-primary/50 transition-all duration-300 group"
+              <div className="flex items-start justify-between mb-4">
+                <div className="w-10 h-10 border border-border bg-secondary flex items-center justify-center group-hover:border-lime/40 transition-colors duration-300">
+                  <link.icon size={16} className="text-muted-foreground group-hover:text-lime transition-colors duration-200" />
+                </div>
+                <ArrowUpRight
+                  size={16}
+                  className="text-muted-foreground/40 group-hover:text-lime group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200"
+                />
+              </div>
+
+              <p className="label-sm mb-1">{link.label}</p>
+              <p className="text-sm font-medium text-foreground mb-1">{link.value}</p>
+              <p className="text-xs text-muted-foreground">{link.desc}</p>
+            </motion.a>
+          ))}
+        </div>
+
+        {/* Location + availability */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.7 }}
+          className="flex flex-col sm:flex-row items-start sm:items-center gap-6 p-6 border border-border bg-card"
+        >
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-lime status-pulse" />
+            <span className="font-mono text-xs text-muted-foreground tracking-widest uppercase">
+              Available for opportunities
+            </span>
+          </div>
+          <div className="w-px h-4 bg-border hidden sm:block" />
+          <div className="flex items-center gap-2">
+            <MapPin size={12} className="text-lime" />
+            <span className="font-mono text-xs text-muted-foreground">Based in India</span>
+          </div>
+          <div className="w-px h-4 bg-border hidden sm:block" />
+          <div className="flex flex-wrap gap-2">
+            {["Open to Work", "Remote Friendly", "Quick Responder"].map((tag) => (
+              <span
+                key={tag}
+                className="font-mono text-[10px] px-3 py-1 border border-border text-muted-foreground"
               >
-                <Mail size={20} />
-                Send Email
-                <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" size={18} />
-              </a>
-            </motion.div>
+                {tag}
+              </span>
+            ))}
           </div>
         </motion.div>
       </div>
